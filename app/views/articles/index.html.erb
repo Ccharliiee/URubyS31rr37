@@ -7,8 +7,11 @@
     <%= render article %>
     <p>
       <%= link_to "Show this article", article %>
+      <%= link_to "Edit this article", edit_article_path(article) %>
+      <%= button_to "Delete this article", article, method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
     </p>
   <% end %>
 </div>
 
 <%= link_to "New article", new_article_path %>
+<p><%= link_to "Home", root_path %></p>
