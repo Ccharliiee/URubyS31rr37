@@ -1,11 +1,44 @@
 .navbar {
-  background-color: #fdf6ea !important;
+  background-color: black !important;
+}
+.nav-link {
+  color: cornsilk !important;
+}
+
+#abloglogo {
+  float: left;
+  font-size: 1.75em;
+  color: rgb(207, 229, 255);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#pgixcontainer {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#pgixjumbotron {
+  background-image: asset-url("forestdbg.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 450px;
 }
 
 .navbar-brand {
   font-size: 3rem;
 }
 
-h1 {
-  color: red;
+/* Sticky Footer Classes */
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: beige;
 }
