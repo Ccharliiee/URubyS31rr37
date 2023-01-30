@@ -26,7 +26,7 @@
       </div>
       <% end %>
       <div class="mb-3 text-center">
-      <% if article.title? %>
+      <% if article.title? && !@article.errors %>
         <%= link_to "[ Show this article ]", @article, class: "text-info" %> |
       <% end %>
       <%= link_to "[ Back to articles ]", articles_path, class: "text-info" %>
