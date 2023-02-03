@@ -1,27 +1,44 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+
+ <div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="col-10">
+      <%= form_with(model: user, class: "shadow p-3 mb-4 bg-info bg-body-tertiary rounded", local: true) do |form| %>
+        <%= render "shared/errors", obj: @user %>
+
+        <div class="row mb-3">
+          <%= form.label :username, class: "col-sm-2 col-form-label text-light" %>
+          <div class="col-sm-10">
+          <%= form.text_field :name, class: "form-control shadow rounded", placeholder: "Enter your Username" %>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <%= form.label :email, class: "col-sm-2 col-form-label text-light" %>
+          <div class="col-sm-10">
+          <%= form.text_field :email, class: "form-control shadow rounded", placeholder: " your email" %>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <%= form.label :password, class: "col-sm-2 col-form-label text-light" %>
+          <div class="col-sm-10">
+          <%= form.password_field :password, class: "form-control shadow rounded", placeholder: " your password" %>
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center mt-4">
+          <div class="col-sm-1">
+            <%= form.submit "Sign up", class: "btn btn-outline-light btn-lg mb-3"%>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <div class="mb-3 text-center">
+      <%= link_to "[ Cancel ]", root_path, class: "text-info" %>
+    </div>
+      
   </div>
+</div> 
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
