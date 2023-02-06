@@ -36,7 +36,11 @@
                 <small>Created <%= time_ago_in_words(article.created_at) %> ago, 
                   edited <%= time_ago_in_words(article.updated_at) %> ago
                 </small>
-                <%= link_to "New article", new_article_path %>
+                <%
+=begin%>
+ <%= link_to "New article", new_article_path %> 
+<%
+=end%>
               </div>
             </div>    
           </div>
