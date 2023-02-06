@@ -29,7 +29,7 @@
 
         <div class="row justify-content-md-center mt-4">
           <div class="col-sm-1">
-            <%= form.submit "Sign up", class: "btn btn-outline-light btn-lg mb-3"%>
+            <%= form.submit (@user.new_record? ? "Sign up" : "Update"), class: "btn btn-outline-light btn-lg mb-3" %>
           </div>
         </div>
       <% end %>
