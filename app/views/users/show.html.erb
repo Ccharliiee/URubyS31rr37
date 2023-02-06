@@ -1,14 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<%
+=begin%>
+ <p style="color: green"><%= notice %></p>
 
 <%= render @user %>
 
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%
-=begin%>
- <%= link_to "Back to users", users_path %> 
+  <%= link_to "Edit this user", edit_user_path(@user) %> | <%= link_to "Back to users", users_path %> 
+
+
+  <%= button_to "Destroy this user", @user, method: :delete %>
+</div> 
 <%
 =end%>
 
-  <%= button_to "Destroy this user", @user, method: :delete %>
+<div class="d-flex flex-column">
+
+
+  <h2 class="text-center mt-4"><%= @user.name %>'s profile</h2>
+  <%= gravatar_for @user, size: 120 %>
+
+  <h3 class="text-center mt-4">Articles</h3>
+  <%= render "articles/article"  %>
+
 </div>
