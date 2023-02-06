@@ -1,4 +1,6 @@
-<p style="color: green"><%= notice %></p>
+<%
+=begin%>
+ <p style="color: green"><%= notice %></p>
 
 <h1>Users</h1>
 
@@ -11,4 +13,49 @@
   <% end %>
 </div>
 
-<%= link_to "New user", new_user_path %>
+<%= link_to "New user", new_user_path %> 
+<%
+=end%>
+
+
+<div class="d-flex flex-column">
+
+
+  <h1 class="text-center mt-4">Bloggers with Stunning Adventure</h1>
+
+  <div class="container" id="articles">
+      <% @users.each do |user| %>
+        <div class="row justify-content-center mt-4">
+          <div class="col-8">
+            <div class="card text-center shadow mb-5 bg-body-tertiary rounded">
+              <div class="card-header fst-italic">
+                by  <%= link_to user.name, user %>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><%= link_to gravatar_for(user, size: 120), user %></h5>
+                <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
+                <%= link_to "View Profile", user, class: "btn btn-outline-success" %>
+                <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-outline-warning" %>
+                <%
+=begin%>
+ <%= link_to "Delete Profile", user, data: {turbo_method: :delete, confirm: "Are you sure?"}, class: "btn btn-outline-danger" %> 
+<%
+=end%>
+              </div>
+          
+              <div class="card-footer text-muted">
+                <small>Joined <%= time_ago_in_words(user.created_at) %> ago, 
+                  <%
+=begin%>
+ edited <%= time_ago_in_words(article.updated_at) %> ago 
+<%
+=end%>
+                </small>
+              </div>
+            </div>    
+          </div>
+        </div>
+      <% end %>
+  </div>
+
+</div>
