@@ -1,0 +1,37 @@
+<div class="d-flex flex-column">
+  <h1 class="text-center mt-4">Sign in</h1>
+    
+
+    <div class="container">
+        <div class="row justify-content-center mt-4">
+            <div class="col-10">
+                <%= form_with(scope: :session, url: login_path, class: "shadow p-3 mb-4 bg-info bg-body-tertiary rounded", local: true) do |form| %>
+
+                    <div class="row mb-3">
+                        <%= form.label :email, class: "col-sm-2 col-form-label text-light" %>
+                        <div class="col-sm-10">
+                            <%= form.text_field :email, class: "form-control shadow rounded", placeholder: " your email" %>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <%= form.label :password, class: "col-sm-2 col-form-label text-light" %>
+                        <div class="col-sm-10">
+                            <%= form.password_field :password, class: "form-control shadow rounded", placeholder: " your password" %>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center mt-4">
+                        <div class="col-sm-1">
+                            <%= form.submit "Login", class: "btn btn-outline-light btn-lg mb-3" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="mb-3 text-center">
+                <%= link_to "[ Doesn't have an account? Signup ]", signup_path, class: "text-info" %>
+            </div>
+        </div>
+    </div>
+</div> 

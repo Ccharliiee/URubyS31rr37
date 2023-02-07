@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user_id] = @user.id
         format.html { redirect_to user_url(@user) }
         flash[:notice] = "You've successfully signed up as User #{@user.name}."
         format.json { render :show, status: :created, location: @user }
