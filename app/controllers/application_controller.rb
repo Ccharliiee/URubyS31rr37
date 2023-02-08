@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
     def loggedin
         !!current_user
     end
+
+    def require_user
+        if !loggedin
+            # flash[:alert] = "Please log in to proceed"
+            redirect_to root_path
+        end
+    end
 end

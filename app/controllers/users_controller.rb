@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :require_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /users or /users.json
   def index
-    @users = User.paginate(page: params[:page], per_page: 2)
+    @users = User.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /users/1 or /users/1.json
   def show
-    @articles= @user.articles.paginate(page: params[:page], per_page: 2)
+    @articles= @user.articles.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /users/new
@@ -70,5 +72,12 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :email, :password)
+    end
+
+    def require_same_user
+      if current_user != @user && current_user.id!=1
+        #flash[:alert] = "You can only edit or delete your own account"
+        redirect_to @user
+      end
     end
 end
