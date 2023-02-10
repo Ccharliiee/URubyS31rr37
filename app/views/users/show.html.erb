@@ -21,6 +21,9 @@
   <% if loggedin && ( @user == current_user || current_user.id==1) %>
     <div class="text-center mt-4">  
       <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-success" %>
+      <%= link_to "Delete your account", @user, 
+      data: { "turbo-method": :delete, "turbo-confirm": 'This will delete this account and associated articles.Are you sure?' }, 
+      class: "btn btn-outline-danger" %>
     </div>
   <% end %>
   
